@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <% if(data) { %>
+      <h1>There are <%= data.length %> persons who voted more than one</h1>
+    <% } %>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Gender</th>
+          <th>Age</th>
+          <th>Number of Votes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if(data && data.length > 0) {
+            data.forEach(d => {
+        %>
+          <tr>
+            <td><%= d.name %></td>
+            <td><%= d.gender %></td>
+            <td><%= d.age %></td>
+            <td><%= d.total %></td>
+          </tr>
+        <% })} %>
+      </tbody>
+    </table>
+  </body>
+</html>

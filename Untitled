@@ -1,0 +1,21 @@
+select v.total, v.name, voters.first_name, v.politician_id
+             from
+              (select count(votes.id) as total, politician_id, congress_members.name
+              from votes
+              left join congress_members
+              ON congress_members.id = votes.politician_id
+              group by politician_id
+              order by total desc
+              limit 5) as v
+              inner join votes ON v.politician_id = votes.politician_id
+              inner join voters ON votes.voter_id = voters.id
+              order by v.total desc, v.name`;
+
+              select count(votes.id) as total, voters.first_name, voters.last_name, voters.gender,voters.age
+              from votes
+              left join congress_members
+              ON congress_members.id = votes.politician_id
+              left join voters
+              ON votes.voter_id = voters.id
+              group by votes.voter_id
+              order by total desc
